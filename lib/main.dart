@@ -3,7 +3,7 @@ import 'package:stock/Screens/HomePage.dart';
 import 'Screens/Signin.dart';
 import 'Screens/Signup.dart';
 import 'Screens/Details.dart';
-
+import 'Screens/Details.dart';
 void main()=>runApp(MyApp());
 
 
@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
         "/HomePage": (context) => const HomePage(),
         "/SigninPage": (context) => const Signin(),
         "/SignupPage": (context) => const Signup(),
-        //"/DetailsPage": (context) => Details(),
       },
     );
   }

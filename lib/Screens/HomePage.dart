@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock/Screens/Details.dart';
 import '../Stock.dart';
 
 class HomePage extends StatefulWidget {
@@ -111,7 +112,9 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(12.5,0,0,0),
-                                            child: ElevatedButton(onPressed: (){}, child: Text('Buy',style: TextStyle(fontSize: 13.5)),),
+                                            child: ElevatedButton(
+                                              onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Details(listStock[i].name,listStock[i].img)));}, 
+                                              child: Text('Buy',style: TextStyle(fontSize: 13.5)),),
                                           ),
                                         ],
                                       ),

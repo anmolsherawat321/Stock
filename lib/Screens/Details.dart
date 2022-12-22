@@ -1,53 +1,44 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 
-// class Details extends StatelessWidget {
+class Details extends StatefulWidget {
+  String name,image;
+  Details(this.name,this.image, {Key? key}) : super(key: key);
+   
+  @override
+  State<Details> createState() => _DetailsState(this.name,this.image);
+}
 
-// final String name,email,mobile,collegename,password;
+class _DetailsState extends State<Details> {
+  late String quantity,date,name,image;
+
+  _DetailsState(this.name,this.image);
+  @override
+   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Buy Stock'),
+      ),
+      backgroundColor: Colors.orange,
+      body: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+          child: Column(
+            children: [
+              Padding(padding: EdgeInsets.all(50.0)),
+              Image(image: AssetImage(image),width: 100.0,height: 100.0,),
+              Text(name),
+
+            ],
+          ),
+        ), 
+        
+    );
+  }
+}
 
 
 
   
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Home Page'),
-//       ),
-//       backgroundColor: Colors.orange,
-//       body: Form(
-//         child: Card(
-//           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-//           child: Column(
-//             children: [
-//               Padding(padding: EdgeInsets.all(50.0)),
-//               Image(image: AssetImage('images/logo.png'),width: 100.0,height: 100.0,),
-//               ListTile(
-//                 leading: Icon(Icons.people),
-//                 title: Text(name),
-//               ),
-//               ListTile(
-//                 leading: Icon(Icons.email),
-//                 title: Text(email),
-//               ),
-//               ListTile(
-//                 leading: Icon(Icons.password),
-//                 title: Text(password),
-//               ),
-//               ListTile(
-//                 leading: Icon(Icons.phone),
-//                 title: Text(mobile),
-//               ),
-//               ListTile(
-//                 leading: Icon(Icons.school),
-//                 title: Text(collegename),
-//               ),
-
-//             ],
-//           ),
-//         ), 
-//         ),
-//     );
-//   }
-// }
+ 
