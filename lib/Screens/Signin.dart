@@ -9,6 +9,9 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,70 +26,83 @@ class _SigninState extends State<Signin> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Hi,',style: TextStyle(fontSize: 20.0,),),
-            Text('Welcome',style: TextStyle(fontSize: 20.0,),),
-            Container(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: TextFormField(
-                        validator: (input){
-                          if(input!.isEmpty){
-                            return 'Provide an email';
-                          }
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Hi,',style: TextStyle(fontSize: 20.0,),),
+              Text('Welcome',style: TextStyle(fontSize: 20.0,),),
+              Container(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(top: 20.0),
+                        child: TextFormField(
+                          validator: (input){
+                            if(input!.isEmpty){
+                              return 'Provide an email';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                          ),
+                          
                         ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 20.0),
+                        child: TextFormField(
+                          validator: (input){
+                            if(input!.length<6){
+                              return 'Password should be 6 char atleast';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                          ),
                         
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: TextFormField(
-                        validator: (input){
-                          if(input!.length<6){
-                            return 'Password should be 6 char atleast';
-                          }
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                          obscureText: true,
                         ),
-                      
-                        obscureText: true,
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: MaterialButton(
-                        padding: EdgeInsets.fromLTRB(100.0, 20.0, 100.0, 20.0),
-                        color: Colors.blue,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                        onPressed: (){},
-                        child: Text('Sign In',style: TextStyle(color: Colors.white,fontSize: 20.0),),
+                      Container(
+                        padding: EdgeInsets.only(top: 20.0),
+                        child: MaterialButton(
+                          padding: EdgeInsets.fromLTRB(100.0, 20.0, 100.0, 20.0),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                          onPressed: (){
+                            AlertDialog alertDialog=AlertDialog(
+                              title: Text('Error',style: TextStyle(fontSize: 20.0),),
+                              content: Text('Invaild Email',style: TextStyle(fontSize: 18.0),),
+                              actions: [
+                                TextButton(
+                                  onPressed: (){Navigator.of(context).pop();}, 
+                                  child: Text('OK',style: TextStyle(fontSize: 15.0,color: Colors.black),)),
+                              ],
+                            );
+                            showDialog(context: context, builder: (_) => alertDialog);
+                          },
+                          child: Text('Sign In',style: TextStyle(color: Colors.white,fontSize: 20.0),),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: GestureDetector(
-                        onTap: (){Navigator.pushReplacementNamed(context, "/SignupPage");},
-                        child: Text('Create an account?',textAlign: TextAlign.center,style: TextStyle(fontSize: 16.0,color: Colors.blue),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: GestureDetector(
+                          onTap: (){Navigator.pushReplacementNamed(context, "/SignupPage");},
+                          child: Text('Create an account?',textAlign: TextAlign.center,style: TextStyle(fontSize: 16.0,color: Colors.blue),),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              
-            ),
-          ],
+                    ],
+                  ),
+                
+              ),
+            ],
+          ),
         ),
       ),
     );
